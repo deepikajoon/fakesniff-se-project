@@ -1,0 +1,29 @@
+{% extends 'detect/base.html' %}
+{% load static %}
+{% block content %}
+<body class="gen_background">
+<div class="container text-center">
+      <img src="{% static 'images/fingerprint_dark.png' %}" alt="Fingerprint Icon" style="width: 60px; margin-top: 5px;">
+      <h4>FAKE SNIFF</h4>
+      <h5>AI-Powered Media Verification Platform</h5>
+
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="card" style="width: 500px; background-color: #373838;">
+          <div class="card-body">
+            <div class="card-title" style="font-size: 20px; color:white"> We would love to hear from you!</div>
+            <form method="post" action="">
+              {% csrf_token %}
+                <div class="mb-3 text-start">
+                  <label for="feedback" class="form-label">What would you like to say about our FakeSniff?</label>
+                  <textarea class="form-control" id="feedback" name="feedback" rows="5" placeholder="Share your thoughts, suggestions, or any issues you faced..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-others">Submit Feedback</button>
+            </form>
+            </div>
+            </div>
+        </div>
+        <a class="nav-link options mt-3" href="{% url 'user_dashboard' %}" style="color:whitesmoke" ><- Back to Dashboard</a>
+    </div>
+</body>
+
+{% endblock %}

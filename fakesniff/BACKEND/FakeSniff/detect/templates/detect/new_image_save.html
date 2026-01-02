@@ -1,0 +1,54 @@
+{% extends 'detect/base.html' %}
+{% load static %}
+{% block content %}
+<body class="gen_background">
+    <div class="container text-center">
+      <img src="{% static 'images/fingerprint_dark.png' %}" alt="Fingerprint Icon" style="width: 60px; margin-top: 5px;">
+      <h4>FAKE SNIFF</h4>
+      <h5>AI-Powered Media Verification Platform</h5>
+
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="card" style="width: 800px; background-color: #373838;">
+          <div class="card-body">
+            <form method="post" action="">
+              {% csrf_token %}
+              <div class="mb-3 text-start">
+                <label for="where" class="form-label">Where did you find this image?</label>
+                <div class="row" style="margin-left: 5px;">
+                <div class="form-check col">
+                  <input class="form-check-input" type="checkbox" value="genAI" id="genAI">
+                  <label class="form-check-label" for="genAI"> Generated from AI </label>
+                </div>
+                <div class="form-check col">
+                  <input class="form-check-input" type="checkbox" value="physical_media" id="physical_media">
+                  <label class="form-check-label" for="physical_media"> Physical Media (Newspaper, Magazine) </label>
+                </div>
+                </div>
+                <div class="row" style="margin-left: 5px;">
+                <div class="form-check col">
+                  <input class="form-check-input" type="checkbox" value="social_media" id="social_media">
+                  <label class="form-check-label" for="social_media"> Social Media (WhatsApp, Instagram) </label>
+                </div>
+              </div>
+              </div>
+
+              <div class="mb-3 text-start form-group">
+                <label for="concern" class="form-label">How is this image concering?</label>
+                <textarea class="form-control" id="comment" rows="5" placeholder="It violates sentiments of a religious community or can trigger riots..."></textarea>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col">
+                  <button type="submit" class="btn btn-others col">Save to Vault</button>
+                </div>
+                <div class="col">
+                  <button type="button" class="btn btn-others col">Cancel</button>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+
+{% endblock %}

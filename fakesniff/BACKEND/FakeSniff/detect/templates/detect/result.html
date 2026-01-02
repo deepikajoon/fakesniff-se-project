@@ -1,0 +1,71 @@
+{% extends 'detect/base1.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid vh-100 overflow-hidden">
+  <div class="row h-100">
+
+    <!-- Sidebar -->
+    <div class="col-md-2 bg-white d-flex flex-column align-items-center justify-content-start p-2">
+      <a class="navbar-brand mb-2" href="#">
+        <img src="{% static 'images/fingerprint.png' %}" alt="Fingerprint Icon" style="width: 120px;">
+      </a>
+      <h4 class="fw-bold text-center mb-3">FAKE SNIFF</h4>
+      <nav class="nav flex-column text-center">
+                <a class="nav-link options" href="{% url 'user_dashboard' %}">Dashboard</a>
+                <a class="nav-link options" href="#">My Vault</a>
+                <a class="nav-link options" href="#">Detect</a>
+                <a class="nav-link options" href="#">Report</a>
+                <a class="nav-link options" href="{% url 'feedback_page' %}">Feedback</a>
+                <a class="nav-link options" href="{% url 'chatbot_page' %}">Chatbot</a>
+                <a class="nav-link options" href="#">Help</a>
+            </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-10 d-flex flex-column align-items-center p-3">
+
+      <!-- Top Bar -->
+      <div class="row w-100 mb-3">
+        <div class="col-auto ms-auto">
+          <a class="nav-link options text-white" href="{% url 'landing_page' %}">Log Out</a>
+        </div>
+      </div>
+
+      <!-- Frame + Confidence -->
+      <div class="row w-100 justify-content-center">
+        <div class="col-md-6 text-center">
+          <div class="frame mb-4 position-relative">
+            <div class="pin tl"></div>
+            <div class="pin tr"></div>
+            <div class="pin bl"></div>
+            <div class="pin br"></div>
+          </div>
+        </div>
+        <div class="col-md-6 text-center">
+          <div class="confidence-box">
+            <h2>Confidence: {{ confidence }}%</h2>
+            {% if confidence < 25 %}
+              <div class="label text-success">Not Fake</div>
+            {% else %}
+              <div class="label text-danger">FAKE</div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="row w-100 justify-content-center">
+        <div class="col-md-12 text-center mt-3">
+            <button class="btn btn-others">Generate Report</button>
+            <button class="btn btn-others">Upload</button>
+        </div>
+        <div class="col-md-12 text-center mt-3">
+            <button class="btn btn-others">Save</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

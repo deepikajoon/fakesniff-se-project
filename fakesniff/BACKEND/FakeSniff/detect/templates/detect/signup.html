@@ -1,0 +1,133 @@
+{% extends 'detect/base.html' %}
+{% load static %}
+{% block content %}
+<body class="gen_background">
+<div class="container text-center">
+      <img src="{% static 'images/fingerprint_dark.png' %}" alt="Fingerprint Icon" style="width: 60px; margin-top: 5px;">
+      <h4>FAKE SNIFF</h4>
+      <h3>Welcome Back to FakeSniff</h3>
+      <h5>AI-Powered Media Verification Platform</h5>
+
+      <div class="d-flex justify-content-center align-items-center ">
+        <div class="card" style="width: 1500px; background-color: #373838;">
+          <div class="card-body">
+            <form method="post" action="">
+              {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- First Name -->
+                        <div class="mb-3 text-start">
+                          <label for="first_name" class="form-label">First Name</label>
+                            <div class="input-group-text">
+                              <span class="input-group-text">
+                                <img src="{% static 'images/person.jpg' %}" alt="icon" style="width: 20px;">
+                              </span>
+                              <input type="text" class="form-control" id="first_name" name="first_name"
+                                value="{{ form.first_name.value|default_if_none:'' }}"
+                                placeholder="Margret">
+                            </div>
+                            {% for error in form.first_name.errors %}
+                              <div class="text-danger">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+
+                          <!-- Last Name -->
+                          <div class="mb-3 text-start">
+                            <label for="last_name" class="form-label">Last Name</label>
+                              <div class="input-group-text">
+                                <span class="input-group-text">
+                                  <img src="{% static 'images/person.jpg' %}" alt="icon" style="width: 20px;">
+                                </span>
+                                <input type="text" class="form-control" id="last_name" name="last_name"
+                                  value="{{ form.last_name.value|default_if_none:'' }}"
+                                  placeholder="Markovni">
+                              </div>
+                              {% for error in form.last_name.errors %}
+                                <div class="text-danger">{{ error }}</div>
+                              {% endfor %}
+                          </div>
+
+                        <!--Email address-->
+                        <div class="mb-3 text-start">
+                            <label for="email" class="form-label">Email Address</label>
+                            <div class="input-group-text">
+                                <span class="input-group-text">
+                                <img src="{% static 'images/person.jpg' %}" alt="icon" style="width: 20px;">
+                                </span>
+                                <input type="email" class="form-control" id="email" name="email" 
+                                value="{{ form.email.value|default_if_none:'' }}"
+                                placeholder="margretmarkkovni@abc.com">
+                            </div>
+                        </div>
+                
+                        <!--Usename-->
+                        <div class="mb-3 text-start">
+                            <label for="username" class="form-label">Username</label>
+                            <div class="input-group-text">
+                                <span class="input-group-text">
+                                <img src="{% static 'images/person.jpg' %}" alt="icon" style="width: 20px;">
+                                </span>
+                                <input type="text" class="form-control" id="username" name="username" 
+                                    value="{{ form.username.value|default_if_none:'' }}"
+                                    placeholder="Margret Markovni">
+                            </div>
+                            {% for error in form.username.errors %}
+                              <div class="text-danger">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                <div class="col-md-6">
+                    <!--Password-->
+                    <div class="mb-3 text-start">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="input-group-text">
+                            <span class="input-group-text">
+                            <img src="{% static 'images/lock.png' %}" alt="icon" style="width: 20px;">
+                            </span>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="**********">
+                        </div>
+                        {% for error in form.password.errors %}
+                          <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mb-3 text-start">
+                        <!--Confirm Password-->
+                        <label for="confirm_password" class="form-label">Confirm Password</label>
+                        <div class="input-group-text">
+                            <span class="input-group-text">
+                            <img src="{% static 'images/lock.png' %}" alt="icon" style="width: 20px;">
+                            </span>
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="**********">
+                        </div>
+                        {% for error in form.confirm_password.errors %}
+                          <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+
+                  <div class="text-start mb-3">
+                    <!--Agree-->
+                    <input type="checkbox" id="agree" name="agree" {% if form.agree.value %}checked{% endif %}>
+                    <label for="agree" class="form-label" style="font-size: 15px;">I agree to Terms & Conditions</label>
+                    {% for error in form.agree.errors %}
+                      <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                  </div>
+
+                
+                    <button type="submit" class="btn btn-others col">Sign Up</button>
+                    <div class="mb-3" style="margin-top: 10px;">
+                    <span style="font-size: 15px; color:white">Already have an account? </span><a href="{% url 'login_page' %}">Log In</a>
+                    </div>
+                </div>
+            </form>
+          </div>
+      </div>
+    </div>
+</div>
+</body>
+
+
+{% endblock %}
